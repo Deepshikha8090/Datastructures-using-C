@@ -1,0 +1,46 @@
+#include<stdio.h>
+#include<stdlib.h>
+typedef struct lklist
+{
+int info;
+struct lklist *next;
+}node;
+int main()
+{
+    int ch;
+    node *head=NULL;
+    node*temp;
+    int data;
+    while(1)
+    {
+        printf("1:Insert at begining");
+        printf("2:Traversing");
+        printf("");
+
+        printf("Enter your choice: ");
+        scanf("%d",&ch);
+        switch(ch)
+        {
+            case 1:
+                        printf("Enter the element:");
+                        scanf("%d",&data);
+                        temp=(node*)malloc(sizeof(node));
+                        temp->info=data;
+                        if(head!=NULL)
+                        {
+                            temp->next=head;
+                        }
+                        else
+                        {
+                            temp->next=NULL;
+                        }
+                        head=temp;
+                        printf("Inserted\n");
+                        break;
+            
+        }
+
+    }
+    return 0;
+  
+}
