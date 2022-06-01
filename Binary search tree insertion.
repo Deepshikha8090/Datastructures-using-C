@@ -1,0 +1,86 @@
+//Inorder PostOrder Preorder Insertion
+
+#include<stdio.h>
+#include<stdlib.h>
+typedef struct BinarySearchTree{
+    int data;
+    struct BinarySearchTree* left,*right;
+}node;
+node* create(int data)
+{
+    node* new_node;
+    new_node=(node*)malloc(sizeof(node));
+    new_node->data=data;
+    new_node->left=new_node->right=NULL;
+    return new_node;
+}
+node* insertion(node* root,int data)
+{
+    if(root==NULL)
+    return create(data);
+    if(data<root->data)
+    root->left=insertion(root->left,data);
+    else
+    root->right=insertion(root->right,data);
+    return root;
+}
+void inorder(node* root)
+{
+    if(root==NULL)
+    return;
+    else
+    {
+        inorder(root->left);
+        printf("%d-",root->data);
+        inorder(root->right);
+    }
+}
+void preorder(node* root)
+{
+    if(root==NULL)
+    return;
+    else
+    {
+        printf("%d--",root->data);
+        preorder(root->left);
+        
+        preorder(root->right);
+    }
+}
+void postorder(node* root)
+{
+    if(root==NULL)
+    return;
+    else
+    {
+       
+        postorder(root->left);
+        
+        postorder(root->right);
+        
+         printf("%d--",root->data);
+    }
+}
+int main()
+{
+    node *root=NULL;
+    root=insertion(root,15);
+    root=insertion(root,10);
+    root=insertion(root,20);
+    root=insertion(root,7);
+    root=insertion(root,13);
+    root=insertion(root,18);
+    root=insertion(root,29);
+    root=insertion(root,8);
+    root=insertion(root,12);
+    root=insertion(root,14);
+    root=insertion(root,19);
+    root=insertion(root,28);
+    root=insertion(root,27);
+    root=insertion(root,9);
+    inorder(root);
+    printf("\n");
+    preorder(root);
+    printf("\n");
+    postorder(root);
+}
